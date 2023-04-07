@@ -1,16 +1,18 @@
+import os
 import re
 import time
 import write_read_file
 import creat_base_employees
 from lesson21_homework.python import sort_change_file
 
-base_list = []
 
-
+if not os.path.isdir(r'../txt'):
+    os.mkdir(r'../txt')
 def input_name_base():
     name = input("Введите имя базы данных\n: ")
-    base_list.append(name)
+    # base_list.append(name)
     return name
+
 
 
 name_base = input_name_base()
@@ -62,6 +64,7 @@ while (input_user := input('Выберите действие:\n'
             else:
                 print(f"Сотрудника с фамилией {user_req} в базе нет")
         case '5':
+            base_list = os.listdir(r'../txt')
             for name in base_list:
                 name_out = re.match(r'^[^\.]*', name)
                 print(name_out[0])
